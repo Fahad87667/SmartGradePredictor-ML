@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Machine Learning Prediction</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+      }
+
+      h1 {
+        color: #2c3e50;
+        margin-top: 20px;
+      }
+
+      #predictionForm {
+        max-width: 400px;
+        margin: 20px auto;
+        background-color: #ecf0f1;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      label {
+        display: block;
+        margin-bottom: 10px;
+        color: #34495e;
+        font-size: 16px;
+        font-weight: bold;
+      }
+
+      input {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 15px;
+        box-sizing: border-box;
+        border: 1px solid #bdc3c7;
+        border-radius: 4px;
+        font-size: 16px;
+        outline: none;
+      }
+
+      button {
+        background-color: #2ecc71;
+        color: #fff;
+        padding: 14px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 18px;
+        transition: background-color 0.3s;
+      }
+
+      button:hover {
+        background-color: #27ae60;
+      }
+
+      #predictedMarks {
+        margin-top: 20px;
+        font-size: 18px;
+        font-weight: bold;
+        color: #2c3e50;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>SmartGradePredictor</h1>
+
+    <form id="predictionForm" action="/predict" method="post">
+      <label for="numberCourses">Number of Courses:</label>
+      <input type="text" id="numberCourses" name="number_courses" required />
+
+      <label for="timeStudy">Time of Study (hours):</label>
+      <input type="text" id="timeStudy" name="time_study" required />
+
+      <button type="submit">Predict Marks</button>
+    </form>
+
+    <p id="predictedMarks">
+      {% if prediction_text %}{{ prediction_text }}{% endif %}
+    </p>
+  </body>
+</html>

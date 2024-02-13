@@ -20,19 +20,21 @@ The project uses a dataset (`Student_Marks.csv`) containing information about th
 
 1. Clone the repository:
 
-````bash
+```bash
 git clone https://github.com/yourusername/SmartGradePredictor-ML.git
+```
 
 2. Install the required dependencies:
 
 ```bash
 pip install -r requirements.txt
+```
 
 3. Run the project:
 
 ```bash
 python app.py
-
+```
 
 ## Models
 
@@ -58,6 +60,3 @@ The models are evaluated based on the following metrics:
 - Explore additional features for improved predictions.
 - Experiment with advanced machine learning techniques.
 - Develop a user interface for easy interaction.
-
-
-````

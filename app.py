@@ -3,7 +3,7 @@ import numpy as np
 import joblib
 
 app = Flask(__name__)
-model = joblib.load(r'C:\Users\HP\Desktop\Satudents Marks Prediction\students_marks_prediction_best_model.pkl')
+model = joblib.load('students_marks_prediction_best_model.pkl')
 
 @app.route('/')
 def home():
@@ -15,10 +15,12 @@ def predict():
         number_courses = float(request.form['number_courses'])
         time_study = float(request.form['time_study'])
 
+        # Reshape the input features into a 2D array
         feature_value = np.array([[number_courses, time_study]])
 
-        output = 0
-        output = model.predict(feature_value)[0][0].round(2)
+        # Convert the feature array to a 2D array for prediction
+        output = model.predict(feature_value.reshape(1, -1))[0].round(2)
+
         return render_template('index.html', prediction_text=f'Predicted Marks: {output}')
 
     except Exception as e:

@@ -6,19 +6,20 @@ from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error
 import joblib
 
 # Load dataset
-df = pd.read_csv(r'C:\Users\HP\Desktop\Satudents Marks Prediction\Data\Student_Marks.csv')
-df = df.isnull().sum()
+df = pd.read_csv('Data/Student_Marks.csv')
+
+# Check for missing values and fill with mean
+df.fillna(df.mean(), inplace=True)
+
 # Assuming 'df' is your DataFrame containing the dataset
-df.mean()
-df=df.fillna(df.mean())
-df=df.isnull().sum()
-df=df.copy()
+df = df.copy()
 
 # Independent features (X)
 x = df[['number_courses', 'time_study']]
 
 # Dependent variable (y)
-y = df[['Marks']]
+y = df['Marks']  # Changed to Series since it's a single column
+
 
 # Train Test Split
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.30, random_state=30)
